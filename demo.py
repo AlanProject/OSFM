@@ -1,5 +1,9 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 #-*- coding:utf-8 -*-
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 # Copyright (C) 2003-2007  Robey Pointer <robeypointer@gmail.com>
 #
 # This file is part of paramiko.
@@ -29,17 +33,31 @@ import sys
 import time
 import traceback
 from paramiko.py3compat import input
+<<<<<<< HEAD
 import paramiko
+=======
+
+import paramiko
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 try:
     import interactive
 except ImportError:
     from . import interactive
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 def agent_auth(transport, username):
     """
     尝试使用任何私有的给定的传输进行验证
     可从SSH代理键。
     """
+<<<<<<< HEAD
+=======
+    
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
     agent = paramiko.Agent()
     agent_keys = agent.get_keys()
     if len(agent_keys) == 0:
@@ -52,6 +70,11 @@ def agent_auth(transport, username):
             return
         except paramiko.SSHException:
             print('... nope.')
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 def manual_auth(username, hostname):
     default_auth = 'p'
     auth = input('Auth by (p)assword, (r)sa key, or (d)ss key? [%s] ' % default_auth)
@@ -84,8 +107,15 @@ def manual_auth(username, hostname):
         pw = getpass.getpass('Password for %s@%s: ' % (username, hostname))
         t.auth_password(username, pw)
 
+<<<<<<< HEAD
 # setup logging
 paramiko.util.log_to_file('demo.log')
+=======
+
+# setup logging
+paramiko.util.log_to_file('demo.log')
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 username = ''
 if len(sys.argv) > 1:
     hostname = sys.argv[1]
@@ -100,6 +130,10 @@ port = 22
 if hostname.find(':') >= 0:
     hostname, portstr = hostname.split(':')
     port = int(portstr)
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 # now connect
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -108,6 +142,10 @@ except Exception as e:
     print('*** Connect failed: ' + str(e))
     traceback.print_exc()
     sys.exit(1)
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 try:
     t = paramiko.Transport(sock)
     try:
@@ -115,6 +153,10 @@ try:
     except paramiko.SSHException:
         print('*** SSH negotiation failed.')
         sys.exit(1)
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
     try:
         keys = paramiko.util.load_host_keys(os.path.expanduser('~/.ssh/known_hosts'))
     except IOError:
@@ -135,6 +177,10 @@ try:
         sys.exit(1)
     else:
         print('*** Host key OK.')
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
     # get username
     if username == '':
         default_username = getpass.getuser()
@@ -157,6 +203,10 @@ try:
     interactive.interactive_shell(chan)
     chan.close()
     t.close()
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf046e7614fef02e35c470e76d851db4353aee76
 except Exception as e:
     print('*** Caught exception: ' + str(e.__class__) + ': ' + str(e))
     traceback.print_exc()
